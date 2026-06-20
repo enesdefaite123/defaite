@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { 
+    background: #050505; color: #fff; font-family: 'Poppins', sans-serif; 
+    overflow-y: scroll; scroll-snap-type: y mandatory; scrollbar-width: none; 
+}
+body::-webkit-scrollbar { display: none; }
+
+.section { 
+    height: 100vh; width: 100vw; display: flex; flex-direction: column; 
+    justify-content: center; align-items: center; scroll-snap-align: start; 
+    position: relative; z-index: 10;
+}
+
+/* --- 1. BÖLÜM: ÇERÇEVELER --- */
+.circle-row { display: flex; align-items: flex-end; justify-content: center; gap: 40px; margin-bottom: 40px; height: 200px; }
+.circle-wrapper { display: flex; flex-direction: column; align-items: center; gap: 15px; }
+
+.circle { 
+    border: 2px solid rgba(255, 255, 255, 0.3); border-radius: 50%; cursor: pointer; 
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    animation: glowPulse 3s infinite alternate ease-in-out;
+    background: rgba(255,255,255,0.02);
+    backdrop-filter: blur(5px);
+}
+.circle:hover { 
+    transform: scale(1.15) translateY(-10px); border-color: #fff;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.8), inset 0 0 20px rgba(255, 255, 255, 0.6); 
+    background: rgba(255,255,255,0.1); 
+}
+
+@keyframes glowPulse {
+    0% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.05); }
+    100% { box-shadow: 0 0 25px rgba(255, 255, 255, 0.2); }
+}
+
+.small { width: 70px; height: 70px; }
+.medium { width: 100px; height: 100px; }
+.large { width: 140px; height: 140px; }
+
+.circle-name {
+    color: #fff; font-size: 1rem; font-weight: 300; letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); transition: all 0.4s ease; opacity: 0.6;
+    text-transform: uppercase;
+}
+.circle-wrapper:hover .circle-name {
+    opacity: 1; text-shadow: 0 0 25px rgba(255, 255, 255, 1); transform: translateY(5px);
+}
+
+.logo-text { font-size: 4rem; letter-spacing: 15px; font-weight: 300; text-shadow: 0 0 25px rgba(255,255,255,0.3); margin-top: 20px; }
+
+/* --- 2. BÖLÜM: VİDEO KARTLARI --- */
+.cards-wrapper { display: flex; justify-content: center; gap: 40px; width: 90%; max-width: 1400px; flex-wrap: wrap; }
+
+.video-card {
+    background: rgba(15, 15, 15, 0.8); width: 550px; border-radius: 16px; overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    backdrop-filter: blur(10px);
+    display: flex; flex-direction: column;
+}
+.video-card:hover {
+    transform: translateY(-10px); border-color: rgba(255,255,255,0.2);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.9), 0 0 30px rgba(255,255,255,0.05);
+}
+
+.video-wrapper { width: 100%; height: 310px; background: #000; position: relative; }
+.video-wrapper iframe { width: 100%; height: 100%; position: absolute; top:0; left:0; }
+
+.yt-thumb-link { display: block; width: 100%; height: 100%; position: relative; overflow: hidden; cursor: pointer; background-size: cover; background-position: center; background-repeat: no-repeat; background-color: #111; transition: background-size 0.4s ease; }
+.yt-thumb-link:hover { background-size: 105%; }
+.yt-play-btn {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    opacity: 0.9; transition: opacity 0.3s ease, transform 0.3s ease;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.6));
+}
+.yt-thumb-link:hover .yt-play-btn { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+
+.card-content { padding: 25px; display: flex; flex-direction: column; gap: 15px; flex-grow: 1; }
+.video-title { font-size: 1.2rem; font-weight: 600; color: #f0f0f0; letter-spacing: 1px; }
+.video-desc { font-size: 0.85rem; color: #999; line-height: 1.6; }
+
+.download-btn {
+    background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); 
+    padding: 12px 25px; border-radius: 8px; font-size: 0.95rem; cursor: pointer; 
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px; 
+    transition: all 0.3s ease; width: max-content; margin-top: auto;
+}
+.download-btn:hover { background: #fff; color: #000; box-shadow: 0 0 20px rgba(255,255,255,0.4); transform: scale(1.05); }
+
+/* --- 3. BÖLÜM: DİSCORD --- */
+.discord-title { font-size: 2.2rem; font-weight: 300; margin-bottom: 30px; letter-spacing: 8px; color: #888; }
+.discord-link { 
+    display: flex; align-items: center; gap: 20px; color: #fff; font-size: 3.5rem; 
+    text-decoration: none; transition: all 0.4s ease; letter-spacing: 3px; font-weight: 600;
+}
+.discord-link:hover { transform: scale(1.05); text-shadow: 0 0 30px rgba(88, 101, 242, 0.8); color: #5865F2; }
+.discord-link svg { transition: all 0.4s ease; }
+.discord-link:hover svg { filter: drop-shadow(0 0 15px rgba(88, 101, 242, 0.8)); }
+
+/* --- MÜZİK ÇALAR (Glassmorphism) --- */
+.glass-panel {
+    background: rgba(10, 10, 10, 0.6); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.spotify-player { 
+    position: fixed; bottom: 40px; right: 40px; width: 400px; padding: 20px; border-radius: 16px; 
+    display: flex; flex-direction: column; gap: 15px; z-index: 100; box-shadow: 0 20px 40px rgba(0,0,0,0.8); 
+    transition: transform 0.3s ease, border-color 0.3s ease; 
+}
+.spotify-player:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.15); }
+.player-top { display: flex; align-items: center; gap: 15px; }
+.track-info p { margin: 0; line-height: 1.4; }
+.track-title { font-size: 1rem; font-weight: 600; color: #fff; }
+.track-artist { font-size: 0.85rem; color: #b3b3b3; text-transform: uppercase; letter-spacing: 1px; }
+.track-album { font-size: 0.8rem; color: #777; }
+
+.player-middle { display: flex; align-items: center; gap: 12px; }
+.time { font-size: 0.75rem; color: #a0a0a0; font-family: monospace; }
+.progress-bar { -webkit-appearance: none; flex-grow: 1; height: 5px; background: rgba(255,255,255,0.1); border-radius: 3px; outline: none; cursor: pointer; position: relative; overflow: hidden; }
+.progress-bar::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; background: #fff; border-radius: 50%; cursor: pointer; box-shadow: -400px 0 0 400px #fff; }
+
+.player-bottom { display: flex; justify-content: center; gap: 30px; align-items: center; margin-top: 5px; }
+.icon { color: #b3b3b3; cursor: pointer; font-size: 1.2rem; transition: all 0.2s; }
+.icon:hover { color: #fff; transform: scale(1.1); }
+.pause-btn { font-size: 1.5rem; color: #fff; }
+.active-repeat { color: #1db954; position: relative; }
+.active-repeat::after { content: ''; position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); width: 4px; height: 4px; background: #1db954; border-radius: 50%; }
+
+/* --- HIZLANDIRILMIŞ KAR EFEKTİ --- */
+#snow-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 1; overflow: hidden; }
+.snowflake { position: absolute; background: #fff; border-radius: 50%; box-shadow: 0 0 6px rgba(255,255,255,0.8); }
+
+@keyframes fallSway { 
+    0% { transform: translate(0, -20px); } 
+    25% { transform: translate(20px, 25vh); }
+    50% { transform: translate(-15px, 50vh); }
+    75% { transform: translate(25px, 75vh); }
+    100% { transform: translate(-10px, 105vh); } 
+} 
+.circle {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.ceyranci {
+    background-image: url("assets/ceyranci.png");
+}
+
+.medusa {
+    background-image: url("assets/medusa.png");
+}
+
+.enes {
+    background-image: url("assets/enes.png");
+}
+
+.rapizar {
+    background-image: url("assets/rapizar.png");
+}
+
+.crextwo {
+    background-image: url("assets/crextwo.png");
+}
